@@ -14,7 +14,6 @@ with open("README.md", "r") as f:
 
 
 requires = [
-    "chardet>=3.0.4",
     "click>=6.7",
     "numpy>=1.13.3",
     "openpyxl>=2.5.8",
@@ -24,7 +23,7 @@ requires = [
     "tabulate>=0.8.9",
 ]
 
-base_requires = ["ghostscript>=0.7", "opencv-python>=3.4.2.17", "pdftopng>=0.2.3"]
+base_requires = ["opencv-python>=3.4.2.17", "pdftopng>=0.2.3"]
 
 plot_requires = [
     "matplotlib>=2.2.3",

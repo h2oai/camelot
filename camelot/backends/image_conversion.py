@@ -2,8 +2,9 @@
 
 from .poppler_backend import PopplerBackend
 from .ghostscript_backend import GhostscriptBackend
+from .pdf2image_backend import PDF2ImageBackend
 
-BACKENDS = {"poppler": PopplerBackend, "ghostscript": GhostscriptBackend}
+BACKENDS = {"pdf2image": PDF2ImageBackend, "poppler": PopplerBackend, "ghostscript": GhostscriptBackend}
 
 
 class ImageConversionBackend(object):
