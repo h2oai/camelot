@@ -23,7 +23,7 @@ requires = [
     "tabulate>=0.8.9",
 ]
 
-base_requires = ["opencv-python>=3.4.2.17", "pdftopng>=0.2.3"]
+base_requires = ["opencv-python>=3.4.2.17", "pdf2image>=1.16.0"]
 
 plot_requires = [
     "matplotlib>=2.2.3",
