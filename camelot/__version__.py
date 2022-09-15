@@ -14,7 +14,7 @@ def generate_version(version, prerelease=None, revision=None):
     return "".join(version_parts)
 
 
-__title__ = "camelot-py"
+__title__ = "camelot"
 __description__ = "PDF Table Extraction for Humans."
 __url__ = "http://camelot-py.readthedocs.io/"
 __version__ = generate_version(VERSION, prerelease=PRERELEASE, revision=REVISION)
