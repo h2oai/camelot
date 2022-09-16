@@ -111,7 +111,7 @@ class Lattice(BaseParser):
         threshold_constant=-2,
         iterations=0,
         resolution=300,
-        backend="ghostscript",
+        backend="pdf2image",
         **kwargs,
     ):
         self.table_regions = table_regions
