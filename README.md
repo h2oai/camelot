@@ -86,7 +86,14 @@ $ pip install "camelot-py[base]"
 After [installing the dependencies](https://camelot-py.readthedocs.io/en/master/user/install.html#using-pip), clone the repo using:
 
 <pre>
-$ git clone https://www.github.com/camelot-dev/camelot
+$ git clone https://www.github.com/h2oai/camelot
+</pre>
+
+Dependencies: (tested on jupyter and colab)
+<pre>
+!pip install pdf2image
+!pip install python-dateutil
+!apt-get install poppler-utils 
 </pre>
 
 and install Camelot using pip:
