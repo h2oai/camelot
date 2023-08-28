@@ -18,7 +18,7 @@ requires = [
     "numpy>=1.13.3",
     "openpyxl>=2.5.8",
     "pandas>=0.23.4",
-    "pdfminer.six>=20200726",
+    "pdfminer.six>=20220506",
     "pypdf>=3.0.0",
     "tabulate>=0.8.9",
 ]
