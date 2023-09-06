@@ -112,6 +112,7 @@ class Lattice(BaseParser):
         iterations=0,
         resolution=300,
         backend="pdf2image",
+        img_fmt='png',
         **kwargs,
     ):
         self.table_regions = table_regions
@@ -130,6 +131,7 @@ class Lattice(BaseParser):
         self.iterations = iterations
         self.resolution = resolution
         self.backend = Lattice._get_backend(backend)
+        self.img_fmt = img_fmt
 
     @staticmethod
     def _get_backend(backend):
@@ -402,7 +404,7 @@ class Lattice(BaseParser):
         return table
 
     def extract_tables(self, filename, suppress_stdout=False, layout_kwargs={}):
-        self._generate_layout(filename, layout_kwargs)
+        self._generate_layout(filename, layout_kwargs, self.img_fmt)
         if not suppress_stdout:
             logger.info("Processing {}".format(os.path.basename(self.rootname)))
 
