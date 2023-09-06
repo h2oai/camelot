@@ -369,7 +369,7 @@ def text_in_bbox(bbox, text):
     rest = {t for t in t_bbox}
     for ba in t_bbox:
         for bb in rest.copy():
-            if ba == bb:
+            if ba == bb or bbox_area(ba)==0:
                 continue
             if bbox_intersect(ba, bb):
                 # if the intersection is larger than 80% of ba's size, we keep the longest
