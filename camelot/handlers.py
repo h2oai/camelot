@@ -171,7 +171,6 @@ class PDFHandler(object):
 
         """
         tables = []
-        print('using update')
         with TemporaryDirectory() as tempdir:
             p_layout_kwargs = []
             for p in self.pages:
