@@ -141,9 +141,13 @@ class PDFHandler(object):
                 with open(fpath, "wb") as f:
                     outfile.write(f)
                 instream.close()
+            return {'layout': layout,
+                    'dim': dim ,
+                    'horizontal_text': horizontal_text,
+                    'vertical_text': vertical_text}
 
     def parse(
-        self, flavor="lattice", suppress_stdout=False, layout_kwargs={}, **kwargs
+        self, flavor="lattice", suppress_stdout=False, **kwargs
     ):
         """Extracts tables by calling parser.get_tables on all single
         page PDFs.
@@ -167,12 +171,14 @@ class PDFHandler(object):
 
         """
         tables = []
+        print('using update')
         with TemporaryDirectory() as tempdir:
+            p_layout_kwargs = []
             for p in self.pages:
-                self._save_page(self.filepath, p, tempdir)
+                p_layout_kwargs.append(self._save_page(self.filepath, p, tempdir))
             pages = [os.path.join(tempdir, f"page-{p}.pdf") for p in self.pages]
             parser = Lattice(**kwargs) if flavor == "lattice" else Stream(**kwargs)
-            for p in pages:
+            for p, layout_kwargs in zip(pages, p_layout_kwargs):
                 t = parser.extract_tables(
                     p, suppress_stdout=suppress_stdout, layout_kwargs=layout_kwargs
                 )
