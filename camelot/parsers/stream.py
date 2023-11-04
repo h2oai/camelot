@@ -316,7 +316,9 @@ class Stream(BaseParser):
                 y1 = float(y1)
                 x2 = float(x2)
                 y2 = float(y2)
-                table_bbox[(x1, y2, x2, y1)] = None
+                region_text = text_in_bbox((x1, y2, x2, y1), self.horizontal_text)
+                if region_text:
+                    table_bbox[(x1, y2, x2, y1)] = None
         self.table_bbox = table_bbox
 
     def _generate_columns_and_rows(self, table_idx, tk):
@@ -329,7 +331,10 @@ class Stream(BaseParser):
         t_bbox["vertical"].sort(key=lambda x: (x.x0, -x.y0))
 
         self.t_bbox = t_bbox
-
+        print('t_bbox', self.t_bbox)
+        # If no text is found return empty col and row
+        # if not self.t_bbox['horizontal'] and not self.t_bbox['vertical']:
+        #     return [(0.,0.)], [(0.,0.)]
         text_x_min, text_y_min, text_x_max, text_y_max = self._text_bbox(self.t_bbox)
         rows_grouped = self._group_rows(self.t_bbox["horizontal"], row_tol=self.row_tol)
         rows = self._join_rows(rows_grouped, text_y_max, text_y_min)
@@ -460,6 +465,7 @@ class Stream(BaseParser):
         for table_idx, tk in enumerate(
             sorted(self.table_bbox.keys(), key=lambda x: x[1], reverse=True)
         ):
+            print('tk', tk)
             cols, rows = self._generate_columns_and_rows(table_idx, tk)
             table = self._generate_table(table_idx, cols, rows)
             table._bbox = tk
